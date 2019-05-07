@@ -1,11 +1,17 @@
-#include "mainwindow.h"
 #include <QApplication>
+#include "scene3d.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char** argv)
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+   QApplication app(argc, argv);
 
-    return a.exec();
+   Scene3D scene1;
+   scene1.setWindowTitle("test");
+   scene1.resize(800, 800);
+   scene1.show();
+
+   //scenel.getfile();
+
+   return app.exec();
 }
+

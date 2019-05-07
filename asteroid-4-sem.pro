@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    scene3d.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    scene3d.h
 
 FORMS += \
         mainwindow.ui
