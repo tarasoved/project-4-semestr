@@ -12,6 +12,23 @@
 #include<dirent.h>
 #include<unistd.h>
 
+struct CFace{
+    int v1,v2,v3;
+};
+
+struct CVertex3{
+    GLfloat x,y,z;
+};
+
+struct CColor3{
+    GLfloat r,g,b;
+};
+
+int IndexSize;
+
+CFace * StrMyIndexArray;
+CVertex3 * StrMyVertexArray;
+CColor3 * StrMyColorArray;
 
 Scene3D::Scene3D(QWidget* parent) : QGLWidget(parent)
 {
@@ -25,7 +42,7 @@ void Scene3D::initializeGL()
    glShadeModel(GL_FLAT);
    glEnable(GL_CULL_FACE);
 
-   //my_getArrays();
+   my_getArrays();
 
    //getVertexArray();
    //getColorArray();
@@ -64,6 +81,152 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    //drawAxis();
-   //drawFigure();
+   drawFigure();
 }
+
+void Scene3D::defaultScene()
+{
+   xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
+}
+
+void Scene3D::my_getArrays()
+{
+    std::ifstream file ("../app2/database/pallas.txt", std::ifstream::in);
+    if (!file)
+            std::perror("ifstream");
+
+    GLfloat R=0.01;
+
+    if (!file)
+    {
+        std::cout << "file does not open" << std::endl;
+    }
+
+    std::string s;
+    int a, b, n_, i;
+    GLfloat n, max = 0, min = 1000, max_ = 0;
+    file >> s;
+    a = atoi(s.c_str());
+    file >> s;
+    b = atoi(s.c_str());
+
+    StrMyIndexArray = new CFace[b];
+    StrMyVertexArray = new CVertex3[a];
+    StrMyColorArray = new CColor3[a];
+    IndexSize = b;
+
+    if (StrMyIndexArray == NULL){
+        std::cout << "Could not allocate memory for StrMyIndexArray" << std::endl;
+    }
+    if (StrMyVertexArray == NULL){
+        std::cout << "Could not allocate memory for StrMyVertexArray" << std::endl;
+    }
+    if (StrMyColorArray == NULL){
+        std::cout << "Could not allocate memory for StrMyColorArray" << std::endl;
+    }
+
+    std::cout << "sizes: " << a << ' ' << b << std::endl;
+    for(i = 0; i < a; i++){
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n = atof(s.c_str());
+        if(max < abs(n)) {
+            max = abs(n);
+        }
+        StrMyVertexArray[i].x = n * R;
+
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n = atof(s.c_str());
+        if(max < abs(n)) {
+            max = abs(n);
+        }
+        StrMyVertexArray[i].y = n * R;
+
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n = atof(s.c_str());
+        if(max < abs(n)) {
+            max = abs(n);
+        }
+        StrMyVertexArray[i].z = n * R;
+
+
+        n = sqrt(StrMyVertexArray[i].x *StrMyVertexArray[i].x + StrMyVertexArray[i].y *StrMyVertexArray[i].y + StrMyVertexArray[i].z *StrMyVertexArray[i].z);
+        if(max_ < n) {
+            max_ = n;
+        }
+        if (min > n){
+            min = n;
+        }
+    }
+
+    for(i = 0; i < b; i++) {
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n_ = atoi(s.c_str());
+        StrMyIndexArray[i].v1= n_ - 1;
+
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n_ = atoi(s.c_str());
+        StrMyIndexArray[i].v2 = n_ - 1;
+
+        file >> s;
+        if (file.eof()){
+            std::cout << "wrong number of vertexes";
+        }
+        n_ = atoi(s.c_str());
+        StrMyIndexArray[i].v3 = n_ - 1;
+    }
+
+    R = 75/max;
+
+    std::cout << max << ' ' << min << std::endl;
+    for(i = 0; i < a; i++)
+    {
+        n = sqrt(StrMyVertexArray[i].x *StrMyVertexArray[i].x + StrMyVertexArray[i].y *StrMyVertexArray[i].y + StrMyVertexArray[i].z *StrMyVertexArray[i].z);
+        n = (0.7f*(n - min) - 0.4f*(n-max_))/(max_ - min);
+        StrMyColorArray[i].r=n;
+        StrMyColorArray[i].g=n;
+        StrMyColorArray[i].b=n;
+        if ((n < 0.4f) || (n > 0.7f)){
+            std::cout << n << std::endl;
+        }
+
+        StrMyVertexArray[i].x = StrMyVertexArray[i].x * R;
+        StrMyVertexArray[i].y = StrMyVertexArray[i].y * R;
+        StrMyVertexArray[i].z = StrMyVertexArray[i].z * R;
+    }
+
+
+    file.close();
+}
+
+void Scene3D::drawFigure()
+{
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+
+    glEnable(GL_TEXTURE_2D);
+    glPushMatrix();
+    //glBindTexture(GL_TEXTURE_2D, Textures[0]);
+
+    glVertexPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyVertexArray);
+    glColorPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyColorArray);
+
+    glDrawElements(GL_TRIANGLES, 3 * IndexSize, GL_UNSIGNED_INT, StrMyIndexArray);
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
 
