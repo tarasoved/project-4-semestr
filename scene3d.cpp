@@ -83,21 +83,37 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
          scale_minus();
       break;
 
-      case Qt::Key_Up:
-         rotate_up();
-      break;
+   case Qt::Key_Up:
+      rotate_up();
+   break;
 
-      case Qt::Key_Down:
-         rotate_down();
-      break;
+   case Qt::Key_Down:
+      rotate_down();
+   break;
 
-      case Qt::Key_Left:
-        rotate_left();
-      break;
+   case Qt::Key_Left:
+     rotate_left();
+   break;
 
-      case Qt::Key_Right:
-          rotate_right();
-       break;
+   case Qt::Key_Right:
+      rotate_right();
+   break;
+
+   case Qt::Key_S:
+      translate_down();
+   break;
+
+   case Qt::Key_W:
+      translate_up();
+   break;
+
+   case Qt::Key_Space:
+      defaultScene();
+   break;
+
+   case Qt::Key_Escape:
+      this->close();
+   break;
    }
 
    updateGL();
