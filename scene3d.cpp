@@ -98,6 +98,14 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
    case Qt::Key_Right:
       rotate_right();
    break;
+
+   case Qt::Key_S:
+      translate_down();
+   break;
+
+   case Qt::Key_W:
+      translate_up();
+   break;
    }
 
    updateGL();
