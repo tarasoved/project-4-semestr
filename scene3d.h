@@ -13,6 +13,11 @@ class Scene3D : public QGLWidget
     GLfloat zTra;
     GLfloat nSca;
 
+    void drawAxis();
+    void defaultScene();
+    void my_getArrays();
+    void drawFigure();
+
 protected:
     void initializeGL();
     void resizeGL(int nWidth, int nHeight);
