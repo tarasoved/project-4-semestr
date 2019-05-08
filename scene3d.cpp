@@ -253,3 +253,47 @@ void Scene3D::drawFigure()
 }
 
 
+void Scene3D::keyPressEvent(QKeyEvent* pe)
+{
+   switch (pe->key())
+   {
+      case Qt::Key_Up:
+         rotate_up();
+         std::cout << "rotate_up";
+      break;
+
+      case Qt::Key_Down:
+         rotate_down();
+      break;
+
+      case Qt::Key_Left:
+        rotate_left();
+      break;
+
+      case Qt::Key_Right:
+         rotate_right();
+      break;
+   }
+
+   updateGL();
+}
+
+void Scene3D::rotate_up()
+{
+   xRot += 1.0;
+}
+
+void Scene3D::rotate_down()
+{
+   xRot -= 1.0;
+}
+
+void Scene3D::rotate_left()
+{
+   zRot += 1.0;
+}
+
+void Scene3D::rotate_right()
+{
+   zRot -= 1.0;
+}

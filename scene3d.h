@@ -18,10 +18,16 @@ class Scene3D : public QGLWidget
     void my_getArrays();
     void drawFigure();
 
+    void rotate_up();
+    void rotate_down();
+    void rotate_left();
+    void rotate_right();
+
 protected:
     void initializeGL();
     void resizeGL(int nWidth, int nHeight);
     void paintGL();
+    void keyPressEvent(QKeyEvent* pe);
 
    public:
       Scene3D(QWidget* parent = 0);
