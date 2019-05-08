@@ -12,6 +12,8 @@ class Scene3D : public QGLWidget
     GLfloat zRot;
     GLfloat zTra;
     GLfloat nSca;
+
+    QPoint ptrMousePosition;
     
     void scale_plus();
     void scale_minus();
@@ -26,11 +28,6 @@ class Scene3D : public QGLWidget
     void defaultScene();
     void my_getArrays();
     void drawFigure();
-
-    void rotate_up();
-    void rotate_down();
-    void rotate_left();
-    void rotate_right();
 
 protected:
     void initializeGL();
