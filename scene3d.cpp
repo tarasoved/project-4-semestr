@@ -67,6 +67,66 @@ void Scene3D::resizeGL(int nWidth, int nHeight)
    glViewport(0, 0, (GLint)nWidth, (GLint)nHeight);
 }
 
+void Scene3D::keyPressEvent(QKeyEvent* pe)
+{
+   switch (pe->key())
+   {
+      case Qt::Key_Plus:
+         scale_plus();
+      break;
+
+      case Qt::Key_Equal:
+         scale_plus();
+      break;
+
+      case Qt::Key_Minus:
+         scale_minus();
+      break;
+   }
+
+   updateGL();
+}
+
+void Scene3D::scale_plus()
+{
+   nSca = nSca*1.1;
+}
+
+void Scene3D::scale_minus()
+{
+   nSca = nSca/1.1;
+}
+
+void Scene3D::rotate_up()
+{
+   xRot += 1.0;
+}
+
+void Scene3D::rotate_down()
+{
+   xRot -= 1.0;
+}
+
+void Scene3D::rotate_left()
+{
+   zRot += 1.0;
+}
+
+void Scene3D::rotate_right()
+{
+   zRot -= 1.0;
+}
+
+void Scene3D::translate_down()
+{
+   zTra -= 0.05;
+}
+
+void Scene3D::translate_up()
+{
+   zTra += 0.05;
+}
+
 void Scene3D::paintGL()
 {
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
