@@ -106,6 +106,14 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
    case Qt::Key_W:
       translate_up();
    break;
+
+   case Qt::Key_Space:
+      defaultScene();
+   break;
+
+   case Qt::Key_Escape:
+      this->close();
+   break;
    }
 
    updateGL();
