@@ -84,6 +84,29 @@ void Scene3D::paintGL()
    drawFigure();
 }
 
+void Scene3D::drawAxis()
+{
+   glLineWidth(3.0f);
+
+   glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
+   glBegin(GL_LINES);
+      glVertex3f( 1.0f,  0.0f,  0.0f);
+      glVertex3f(-1.0f,  0.0f,  0.0f);
+   glEnd();
+
+   QColor halfGreen(0, 128, 0, 255);
+   qglColor(halfGreen);
+   glBegin(GL_LINES);
+      glVertex3f( 0.0f,  1.0f,  0.0f);
+      glVertex3f( 0.0f, -1.0f,  0.0f);
+
+      glColor4f(0.00f, 0.00f, 1.00f, 1.0f);
+      glVertex3f( 0.0f,  0.0f,  1.0f);
+      glVertex3f( 0.0f,  0.0f, -1.0f);
+   glEnd();
+}
+
+
 void Scene3D::defaultScene()
 {
    xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
