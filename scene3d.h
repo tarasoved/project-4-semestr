@@ -13,9 +13,8 @@ class Scene3D : public QGLWidget
     GLfloat zTra;
     GLfloat nSca;
 
-  //  QPoint ptrMousePosition;
-
-
+    QPoint ptrMousePosition;
+    
     void scale_plus();
     void scale_minus();
     void rotate_up();
@@ -24,6 +23,7 @@ class Scene3D : public QGLWidget
     void rotate_right();
     void translate_down();
     void translate_up();
+
     void drawAxis();
     void defaultScene();
     void my_getArrays();
@@ -33,10 +33,9 @@ protected:
     void initializeGL();
     void resizeGL(int nWidth, int nHeight);
     void paintGL();
-    //void mousePressEvent(QMouseEvent* pe);
-    //void mouseMoveEvent(QMouseEvent* pe);
-   // void mouseReleaseEvent(QMouseEvent* pe);
     void keyPressEvent(QKeyEvent* pe);
+    void mousePressEvent(QMouseEvent* pe);
+    void mouseMoveEvent(QMouseEvent* pe);
 
    public:
       Scene3D(QWidget* parent = 0);

@@ -98,8 +98,6 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
    case Qt::Key_Right:
       rotate_right();
    break;
-
-
    }
 
    updateGL();
@@ -330,4 +328,17 @@ void Scene3D::drawFigure()
     glDisableClientState(GL_VERTEX_ARRAY);
 }
 
+void Scene3D::mousePressEvent(QMouseEvent* pe)
+{
+   ptrMousePosition = pe->pos();
+}
 
+void Scene3D::mouseMoveEvent(QMouseEvent* pe)
+{
+   xRot += 180/nSca*(GLfloat)(pe->y()-ptrMousePosition.y())/height();
+   zRot += 180/nSca*(GLfloat)(pe->x()-ptrMousePosition.x())/width();
+
+   ptrMousePosition = pe->pos();
+
+   updateGL();
+}
