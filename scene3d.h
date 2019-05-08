@@ -13,6 +13,8 @@ class Scene3D : public QGLWidget
     GLfloat zTra;
     GLfloat nSca;
 
+    QPoint ptrMousePosition;
+
     void drawAxis();
     void defaultScene();
     void my_getArrays();
@@ -28,6 +30,8 @@ protected:
     void resizeGL(int nWidth, int nHeight);
     void paintGL();
     void keyPressEvent(QKeyEvent* pe);
+    void mousePressEvent(QMouseEvent* pe);
+    void mouseMoveEvent(QMouseEvent* pe);
 
    public:
       Scene3D(QWidget* parent = 0);
