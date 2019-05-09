@@ -1,14 +1,16 @@
 #include <QApplication>
 #include "scene3d.h"
+#include "mainwindow.h"
+
 
 int main(int argc, char** argv)
 {
    QApplication app(argc, argv);
 
-   Scene3D scene1;
-   scene1.setWindowTitle("Asteroid");
-   scene1.resize(800, 800);
-   scene1.show();
+   MainWindow s1;
+   s1.Wido.setWindowTitle("Asteroid");
+   s1.Wido.resize(800, 800);
+   s1.show();
 
    //scenel.getfile();
 
