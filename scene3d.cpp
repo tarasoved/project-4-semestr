@@ -174,6 +174,7 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    drawAxis();
+   drawArrow();
    drawFigure();
 }
 
@@ -200,6 +201,31 @@ void Scene3D::drawAxis()
    glEnd();
 }
 
+void Scene3D::drawArrow()
+{
+   glLineWidth(6.0f);
+   float l = sqrtf((grav_Arrow.x1 - grav_Arrow.x2)*(grav_Arrow.x1 - grav_Arrow.x2) +
+                   (grav_Arrow.y1 - grav_Arrow.y2)*(grav_Arrow.y1 - grav_Arrow.y2) +
+                   (grav_Arrow.z1 - grav_Arrow.z2)*(grav_Arrow.z1 - grav_Arrow.z2)) * 10;
+
+
+   glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
+   glBegin(GL_LINES);
+      glVertex3f(grav_Arrow.x1,  grav_Arrow.y1,  grav_Arrow.z1);
+      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
+
+      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
+      glVertex3f(grav_Arrow.x2 - (grav_Arrow.x2 - grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l,
+                 grav_Arrow.y2 - (grav_Arrow.y2 - grav_Arrow.y1) /l,
+                 grav_Arrow.z2 + (-grav_Arrow.x2 + grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l);
+
+      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
+      glVertex3f(grav_Arrow.x2 - (- grav_Arrow.x2 + grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l,
+                 grav_Arrow.y2 - (grav_Arrow.y2 - grav_Arrow.y1) /l,
+                 grav_Arrow.z2 + (-grav_Arrow.x2 + grav_Arrow.x1 - grav_Arrow.z2 + grav_Arrow.z1)/l);
+   glEnd();
+
+}
 
 void Scene3D::defaultScene()
 {
@@ -360,3 +386,4 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 
    update();
 }
+

@@ -15,6 +15,18 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     GLfloat zTra;
     GLfloat nSca;
 
+    struct Arrow
+    {
+        GLfloat x1 = 1.0;
+        GLfloat y1 = 1.0;
+        GLfloat z1 = 1.0;
+
+        GLfloat x2 = 0.8;
+        GLfloat y2 = 0.8;
+        GLfloat z2 = 0.8;
+    };
+    Arrow grav_Arrow;
+
     QPoint ptrMousePosition;
     
     void scale_plus();
@@ -25,6 +37,8 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void rotate_right();
     void translate_down();
     void translate_up();
+
+    void drawArrow();
 
     void drawAxis();
     void defaultScene();
