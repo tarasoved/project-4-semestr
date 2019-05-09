@@ -30,14 +30,15 @@ CFace * StrMyIndexArray;
 CVertex3 * StrMyVertexArray;
 CColor3 * StrMyColorArray;
 
-Scene3D::Scene3D(QWidget* parent) : QGLWidget(parent)
+Scene3D::Scene3D(QWidget* parent) : QOpenGLWidget(parent)
 {
    xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
 }
 
 void Scene3D::initializeGL()
 {
-   qglClearColor(Qt::white);
+   initializeOpenGLFunctions();
+   glClearColor(1.0,1.0,1.0,1.0);
    glEnable(GL_DEPTH_TEST);
    glShadeModel(GL_FLAT);
    glEnable(GL_CULL_FACE);
@@ -116,7 +117,7 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
    break;
    }
 
-   updateGL();
+   update();
 }
 
 void Scene3D::scale_plus()
@@ -187,7 +188,8 @@ void Scene3D::drawAxis()
    glEnd();
 
    QColor halfGreen(0, 128, 0, 255);
-   qglColor(halfGreen);
+   initializeOpenGLFunctions();
+   glColor4f(0.00f, 1.00f, 0.00f, 1.0f);
    glBegin(GL_LINES);
       glVertex3f( 0.0f,  1.0f,  0.0f);
       glVertex3f( 0.0f, -1.0f,  0.0f);
@@ -356,5 +358,5 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 
    ptrMousePosition = pe->pos();
 
-   updateGL();
+   update();
 }

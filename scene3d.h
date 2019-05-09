@@ -1,9 +1,11 @@
 #ifndef SCENE3D_H
 #define SCENE3D_H
 
-#include <QGLWidget>
+#include <QOpenGLWidget>
+#include <QOpenGLFunctions>
 
-class Scene3D : public QGLWidget
+
+class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
 {
     private:
 

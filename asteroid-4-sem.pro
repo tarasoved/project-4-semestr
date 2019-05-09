@@ -25,13 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    grav_calc.cpp \
         main.cpp \
         mainwindow.cpp \
-    scene3d.cpp
+    predicates.cxx \
+    scene3d.cpp \
+    tetgen.cxx
 
 HEADERS += \
+    grav_calc.h \
         mainwindow.h \
-    scene3d.h
+    scene3d.h \
+    tetgen.h
 
 FORMS += \
         mainwindow.ui
