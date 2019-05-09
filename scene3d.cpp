@@ -12,6 +12,9 @@
 #include<dirent.h>
 #include<unistd.h>
 
+#include "tetgen.h"
+#include "grav_calc.h"
+
 struct CFace{
     int v1,v2,v3;
 };
@@ -203,14 +206,17 @@ void Scene3D::drawAxis()
 
 void Scene3D::drawArrow()
 {
-   glLineWidth(6.0f);
+
    float l = sqrtf((grav_Arrow.x1 - grav_Arrow.x2)*(grav_Arrow.x1 - grav_Arrow.x2) +
                    (grav_Arrow.y1 - grav_Arrow.y2)*(grav_Arrow.y1 - grav_Arrow.y2) +
                    (grav_Arrow.z1 - grav_Arrow.z2)*(grav_Arrow.z1 - grav_Arrow.z2)) * 10;
 
-
+   //std::cout << "l = " << l << std::endl;
+   glLineWidth(100.0f);
    glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
    glBegin(GL_LINES);
+
+
       glVertex3f(grav_Arrow.x1,  grav_Arrow.y1,  grav_Arrow.z1);
       glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
 
@@ -244,6 +250,19 @@ void Scene3D::my_getArrays()
     {
         std::cout << "file does not open" << std::endl;
     }
+
+    fin.open("../app2/database/pallas.txt");
+    tetrahedralization(&in, &out, &behavior, &fin);
+
+    REAL p[3], v[3];
+    p[0] = 0;
+    p[1] = 0;
+    p[2] = 2;
+
+    grav_in_point(&out, p, v);
+    std::cout << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
+
+    grav_Arrow.x1 = p[0]; grav_Arrow.y1 = p[1]; grav_Arrow.z1 = p[2]; grav_Arrow.x2 = p[0] - v[0]/400; grav_Arrow.y2 = p[1] - v[1]/400; grav_Arrow.z2 = p[2] - v[2]/400;
 
     std::string s;
     int a, b, n_, i;

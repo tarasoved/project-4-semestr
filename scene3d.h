@@ -4,6 +4,8 @@
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 
+#include "tetgen.h"
+#include "grav_calc.h"
 
 class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
 {
@@ -14,6 +16,10 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     GLfloat zRot;
     GLfloat zTra;
     GLfloat nSca;
+
+    tetgenio in, out;
+    tetgenbehavior behavior;
+    std::ifstream fin;
 
     struct Arrow
     {
