@@ -51,6 +51,7 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void defaultScene();
     void my_getArrays();
     void drawFigure();
+    void CalcPoint(REAL a, REAL b, REAL c);
 
 protected:
     void initializeGL();
