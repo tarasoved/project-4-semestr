@@ -233,6 +233,18 @@ void Scene3D::drawArrow()
 
 }
 
+void Scene3D::mouseReleaseEvent(QMouseEvent* pe)
+{
+
+}
+
+void Scene3D::wheelEvent(QWheelEvent* pe)
+{
+   if ((pe->delta())>0) scale_plus(); else if ((pe->delta())<0) scale_minus();
+
+   update();
+}
+
 void Scene3D::defaultScene()
 {
    xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
@@ -257,7 +269,8 @@ void Scene3D::my_getArrays()
     REAL p[3], v[3];
     p[0] = 0;
     p[1] = 0;
-    p[2] = 2;
+    p[2] = 2
+            ;
 
     grav_in_point(&out, p, v);
     std::cout << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;

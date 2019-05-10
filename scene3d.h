@@ -57,7 +57,10 @@ protected:
     void paintGL();
     void keyPressEvent(QKeyEvent* pe);
     void mousePressEvent(QMouseEvent* pe);
+    void wheelEvent(QWheelEvent* pe);
     void mouseMoveEvent(QMouseEvent* pe);
+    void mouseReleaseEvent(QMouseEvent* pe);
+
 
    public:
       Scene3D(QWidget* parent = 0);
