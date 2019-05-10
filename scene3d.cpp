@@ -207,9 +207,9 @@ void Scene3D::drawAxis()
 void Scene3D::drawArrow()
 {
 
-   float l = sqrtf((grav_Arrow.x1 - grav_Arrow.x2)*(grav_Arrow.x1 - grav_Arrow.x2) +
-                   (grav_Arrow.y1 - grav_Arrow.y2)*(grav_Arrow.y1 - grav_Arrow.y2) +
-                   (grav_Arrow.z1 - grav_Arrow.z2)*(grav_Arrow.z1 - grav_Arrow.z2)) * 10;
+   float l = sqrtf(grav_Arrow.x2*grav_Arrow.x2 +
+                   grav_Arrow.y2*grav_Arrow.y2 +
+                   grav_Arrow.z2*grav_Arrow.z2);
 
    //std::cout << "l = " << l << std::endl;
    glLineWidth(100.0f);
@@ -218,17 +218,20 @@ void Scene3D::drawArrow()
 
 
       glVertex3f(grav_Arrow.x1,  grav_Arrow.y1,  grav_Arrow.z1);
-      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
 
-      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
-      glVertex3f(grav_Arrow.x2 - (grav_Arrow.x2 - grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l,
-                 grav_Arrow.y2 - (grav_Arrow.y2 - grav_Arrow.y1) /l,
-                 grav_Arrow.z2 + (-grav_Arrow.x2 + grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l - (grav_Arrow.x2 - grav_Arrow.z2)/l,
+                 grav_Arrow.y1 + grav_Arrow.y2/l,
+                 grav_Arrow.z1 + grav_Arrow.z2/l - (grav_Arrow.x2 + grav_Arrow.z2)/l);
+//      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2 - (grav_Arrow.x2 - grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l,
+//                 grav_Arrow.y2 - (grav_Arrow.y2 - grav_Arrow.y1) /l,
+//                 grav_Arrow.z2 + (-grav_Arrow.x2 + grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l);
 
-      glVertex3f(grav_Arrow.x2,  grav_Arrow.y2,  grav_Arrow.z2);
-      glVertex3f(grav_Arrow.x2 - (- grav_Arrow.x2 + grav_Arrow.x1 + grav_Arrow.z2 - grav_Arrow.z1)/l,
-                 grav_Arrow.y2 - (grav_Arrow.y2 - grav_Arrow.y1) /l,
-                 grav_Arrow.z2 + (-grav_Arrow.x2 + grav_Arrow.x1 - grav_Arrow.z2 + grav_Arrow.z1)/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l - (grav_Arrow.x2 + grav_Arrow.z2)/l,
+                 grav_Arrow.y1 + grav_Arrow.y2/l,
+                 grav_Arrow.z1 + grav_Arrow.z2/l - (-grav_Arrow.x2 + grav_Arrow.z2)/l);
    glEnd();
 
 }
@@ -256,7 +259,7 @@ void Scene3D::my_getArrays()
     if (!file)
             std::perror("ifstream");
 
-    GLfloat R=0.01;
+    R=1;
 
     if (!file)
     {
@@ -265,17 +268,7 @@ void Scene3D::my_getArrays()
 
     fin.open("../app2/database/pallas.txt");
     tetrahedralization(&in, &out, &behavior, &fin);
-
-    REAL p[3], v[3];
-    p[0] = 0;
-    p[1] = 0;
-    p[2] = 2
-            ;
-
-    grav_in_point(&out, p, v);
-    std::cout << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
-
-    grav_Arrow.x1 = p[0]; grav_Arrow.y1 = p[1]; grav_Arrow.z1 = p[2]; grav_Arrow.x2 = p[0] - v[0]/400; grav_Arrow.y2 = p[1] - v[1]/400; grav_Arrow.z2 = p[2] - v[2]/400;
+    fin.close();
 
     std::string s;
     int a, b, n_, i;
@@ -364,8 +357,8 @@ void Scene3D::my_getArrays()
         n_ = atoi(s.c_str());
         StrMyIndexArray[i].v3 = n_ - 1;
     }
-
-    R = 75/max;
+    R = 0.75/max;
+    std::cout << "max = " << max << ", R = " << R << std::endl;
 
     std::cout << max << ' ' << min << std::endl;
     for(i = 0; i < a; i++)
@@ -386,6 +379,18 @@ void Scene3D::my_getArrays()
 
 
     file.close();
+
+    REAL p[3], v[3];
+    p[0] = 0/R;
+    p[1] = 0/R;
+    p[2] = 2/R;
+
+    std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
+    grav_in_point(&out, p, v);
+    std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
+
+
+    grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;
 }
 
 void Scene3D::drawFigure()
@@ -399,6 +404,10 @@ void Scene3D::drawFigure()
 
     glVertexPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyVertexArray);
     glColorPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyColorArray);
+
+    QString str = "test";
+
+    //renderText ( 1, 1, str, const QFont & font = QFont(), int listBase = 2000 );
 
     glDrawElements(GL_TRIANGLES, 3 * IndexSize, GL_UNSIGNED_INT, StrMyIndexArray);
     glDisableClientState(GL_VERTEX_ARRAY);
@@ -419,3 +428,22 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
    update();
 }
 
+//void MapCanvas::renderText(double x, double y, double z, const QString &str, const QFont & font = QFont()) {
+//    // Identify x and y locations to render text within widget
+//    int height = this->height();
+//    GLdouble textPosX = 0, textPosY = 0, textPosZ = 0;
+//    project(x, y, 0f, &textPosX, &textPosY, &textPosZ);
+//    textPosY = height - textPosY; // y is inverted
+
+//    // Retrieve last OpenGL color to use as a font color
+//    GLdouble glColor[4];
+//    glGetDoublev(GL_CURRENT_COLOR, glColor);
+//    QColor fontColor = QColor(glColor[0], glColor[1], glColor[2], glColor[3]);
+
+//    // Render text
+//    QPainter painter(this);
+//    painter.setPen(fontColor);
+//    painter.setFont(font);
+//    painter.drawText(textPosX, textPosY, text);
+//    painter.end();
+//}

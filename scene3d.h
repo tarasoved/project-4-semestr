@@ -16,6 +16,7 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     GLfloat zRot;
     GLfloat zTra;
     GLfloat nSca;
+    GLfloat R;
 
     tetgenio in, out;
     tetgenbehavior behavior;

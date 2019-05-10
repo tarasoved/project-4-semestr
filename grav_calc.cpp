@@ -45,7 +45,7 @@ void grav_in_point(tetgenio *out, REAL *p, REAL *v) {
         c[0] = out->pointlist[m * 3] - out->pointlist[(m + 3) * 3];
         c[1] = out->pointlist[m * 3 + 1] - out->pointlist[(m + 3) * 3 + 1];
         c[2] = out->pointlist[m * 3 + 2] - out->pointlist[(m + 3) * 3 + 2];
-        K = triple_product(a, b, c) / pow(v1 * v1 + v2 * v2 + v3 * v3, 1.5);
+        K = abs(triple_product(a, b, c)) / pow(v1 * v1 + v2 * v2 + v3 * v3, 1.5);
         v[0] += K * v1;
         v[1] += K * v2;
         v[2] += K * v3;
