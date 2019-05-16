@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setCentralWidget(&Wido);
     Wido.setFocusPolicy (Qt::StrongFocus);
-    Knopka.clicked.connected(this->parus());
+    //Knopka.clicked.connected(parus());
 }
 
 MainWindow::~MainWindow()

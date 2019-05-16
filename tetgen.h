@@ -73,7 +73,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //                                                                           //
-// tetgenio                                                                  //
+//  tetgenio                                                                  //
 //                                                                           //
 // A structure for transferring data into and out of TetGen's mesh structure,//
 // 'tetgenmesh' (declared below).                                            //

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>847</width>
-    <height>571</height>
+    <width>800</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,33 +17,33 @@
    <widget class="QOpenGLWidget" name="Wido">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>531</height>
+      <width>721</width>
+      <height>211</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="Knopka">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>498</y>
-      <width>89</width>
-      <height>25</height>
+      <x>18</x>
+      <y>204</y>
+      <width>281</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>104</x>
-      <y>467</y>
-      <width>142</width>
-      <height>25</height>
+      <x>220</x>
+      <y>40</y>
+      <width>256</width>
+      <height>192</height>
      </rect>
     </property>
    </widget>
@@ -53,19 +53,18 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>847</width>
+     <width>800</width>
      <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAsteroid">
     <property name="title">
-     <string>File</string>
+     <string>Asteroid</string>
     </property>
-    <addaction name="actionImport"/>
    </widget>
    <widget class="QMenu" name="menuDSmjh">
     <property name="title">
-     <string>Help</string>
+     <string>DSmjh</string>
     </property>
    </widget>
    <addaction name="menuAsteroid"/>
@@ -79,11 +78,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <action name="actionImport">
-   <property name="text">
-    <string>Import</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
