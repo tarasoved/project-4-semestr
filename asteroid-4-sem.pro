@@ -36,8 +36,8 @@ HEADERS += \
     grav_calc.h \
         mainwindow.h \
     scene3d.h \
-
     tetgen.h
+
 
 FORMS += \
         mainwindow.ui
