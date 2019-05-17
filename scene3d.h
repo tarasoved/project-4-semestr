@@ -46,6 +46,7 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void translate_up();
 
     void drawArrow();
+    void clicked();
 
     void drawAxis();
     void defaultScene();
