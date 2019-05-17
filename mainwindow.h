@@ -22,12 +22,15 @@ public:
     Scene3D Wido;
     QPushButton Knopka;
 
+
+private slots:
+    void on_Knopka_clicked();
+
 private:
     Ui::MainWindow *ui;
-    void parus()
-    {
-        printf("ok");
-    }
+    void Import_file();
+    void help();
+
 };
 
 #endif // MAINWINDOW_H

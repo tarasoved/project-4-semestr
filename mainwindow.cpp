@@ -7,12 +7,33 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setCentralWidget(&Wido);
     Wido.setFocusPolicy (Qt::StrongFocus);
-    //Knopka.clicked.connected(parus());
+    setCentralWidget(&Wido);
+    QHBoxLayout *buttonsLayout = new QHBoxLayout ;
+    buttonsLayout->addWidget(&Knopka);
+    setLayout(buttonsLayout);
+
+
+
+}
+
+void MainWindow::help()
+{
+
+}
+void MainWindow::Import_file()
+{
+   // Wido.fin.open("../app2/database/pallas.txt");
+    //tetrahedralization(&in, &out, &behavior, &fin);
+    //fin.close();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_Knopka_clicked()
+{
+    printf("ok!!!!");
 }
