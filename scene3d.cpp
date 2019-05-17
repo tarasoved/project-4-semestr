@@ -12,6 +12,9 @@
 #include<dirent.h>
 #include<unistd.h>
 
+#include "tetgen.h"
+#include "grav_calc.h"
+
 struct CFace{
     int v1,v2,v3;
 };
@@ -30,19 +33,22 @@ CFace * StrMyIndexArray;
 CVertex3 * StrMyVertexArray;
 CColor3 * StrMyColorArray;
 
-Scene3D::Scene3D(QWidget* parent) : QGLWidget(parent)
+Scene3D::Scene3D(QWidget* parent) : QOpenGLWidget(parent)
 {
    xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
 }
 
 void Scene3D::initializeGL()
 {
-   qglClearColor(Qt::white);
+   initializeOpenGLFunctions();
+   glClearColor(1.0,1.0,1.0,1.0);
    glEnable(GL_DEPTH_TEST);
    glShadeModel(GL_FLAT);
    glEnable(GL_CULL_FACE);
 
    my_getArrays();
+
+   CalcPoint(0,0.6,0.6);
 
    //getVertexArray();
    //getColorArray();
@@ -83,24 +89,40 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
          scale_minus();
       break;
 
-      case Qt::Key_Up:
-         rotate_up();
-      break;
+   case Qt::Key_Up:
+      rotate_up();
+   break;
 
-      case Qt::Key_Down:
-         rotate_down();
-      break;
+   case Qt::Key_Down:
+      rotate_down();
+   break;
 
-      case Qt::Key_Left:
-        rotate_left();
-      break;
+   case Qt::Key_Left:
+     rotate_left();
+   break;
 
-      case Qt::Key_Right:
-          rotate_right();
-       break;
+   case Qt::Key_Right:
+      rotate_right();
+   break;
+
+   case Qt::Key_S:
+      translate_down();
+   break;
+
+   case Qt::Key_W:
+      translate_up();
+   break;
+
+   case Qt::Key_Space:
+      defaultScene();
+   break;
+
+   case Qt::Key_Escape:
+      this->close();
+   break;
    }
 
-   updateGL();
+   update();
 }
 
 void Scene3D::scale_plus()
@@ -157,6 +179,7 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    drawAxis();
+   drawArrow();
    drawFigure();
 }
 
@@ -171,7 +194,8 @@ void Scene3D::drawAxis()
    glEnd();
 
    QColor halfGreen(0, 128, 0, 255);
-   qglColor(halfGreen);
+   initializeOpenGLFunctions();
+   glColor4f(0.00f, 1.00f, 0.00f, 1.0f);
    glBegin(GL_LINES);
       glVertex3f( 0.0f,  1.0f,  0.0f);
       glVertex3f( 0.0f, -1.0f,  0.0f);
@@ -182,6 +206,46 @@ void Scene3D::drawAxis()
    glEnd();
 }
 
+void Scene3D::drawArrow()
+{
+
+   float l = sqrtf(grav_Arrow.x2*grav_Arrow.x2 +
+                   grav_Arrow.y2*grav_Arrow.y2 +
+                   grav_Arrow.z2*grav_Arrow.z2)*5;
+
+   //std::cout << "l = " << l << std::endl;
+   glLineWidth(100.0f);
+   glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
+   glBegin(GL_LINES);
+
+
+      glVertex3f(grav_Arrow.x1,  grav_Arrow.y1,  grav_Arrow.z1);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
+
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l - (grav_Arrow.x2 - grav_Arrow.z2)/(3*l),
+                 grav_Arrow.y1 + grav_Arrow.y2/l - (grav_Arrow.y2)/(3*l),
+                 grav_Arrow.z1 + grav_Arrow.z2/l - (grav_Arrow.x2 + grav_Arrow.z2)/(3*l));
+
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l,  grav_Arrow.y1 + grav_Arrow.y2/l,  grav_Arrow.z1 + grav_Arrow.z2/l);
+      glVertex3f(grav_Arrow.x1 + grav_Arrow.x2/l - (grav_Arrow.x2 + grav_Arrow.z2)/(3*l),
+                 grav_Arrow.y1 + grav_Arrow.y2/l - (grav_Arrow.y2)/(3*l),
+                 grav_Arrow.z1 + grav_Arrow.z2/l - (-grav_Arrow.x2 + grav_Arrow.z2)/(3*l));
+   glEnd();
+
+}
+
+void Scene3D::mouseReleaseEvent(QMouseEvent* pe)
+{
+
+}
+
+void Scene3D::wheelEvent(QWheelEvent* pe)
+{
+   if ((pe->delta())>0) scale_plus(); else if ((pe->delta())<0) scale_minus();
+
+   update();
+}
 
 void Scene3D::defaultScene()
 {
@@ -190,16 +254,20 @@ void Scene3D::defaultScene()
 
 void Scene3D::my_getArrays()
 {
-    std::ifstream file ("../app2/database/pallas.txt", std::ifstream::in);
+    std::ifstream file ("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt", std::ifstream::in);
     if (!file)
             std::perror("ifstream");
 
-    GLfloat R=0.01;
+    R=1;
 
     if (!file)
     {
         std::cout << "file does not open" << std::endl;
     }
+
+    fin.open("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt");
+    tetrahedralization(&in, &out, &behavior, &fin);
+    fin.close();
 
     std::string s;
     int a, b, n_, i;
@@ -288,8 +356,8 @@ void Scene3D::my_getArrays()
         n_ = atoi(s.c_str());
         StrMyIndexArray[i].v3 = n_ - 1;
     }
-
-    R = 75/max;
+    R = 0.75/max;
+    std::cout << "max = " << max << ", R = " << R << std::endl;
 
     std::cout << max << ' ' << min << std::endl;
     for(i = 0; i < a; i++)
@@ -307,9 +375,24 @@ void Scene3D::my_getArrays()
         StrMyVertexArray[i].y = StrMyVertexArray[i].y * R;
         StrMyVertexArray[i].z = StrMyVertexArray[i].z * R;
     }
-
-
     file.close();
+}
+
+void Scene3D::CalcPoint(REAL a, REAL b, REAL c) {
+
+    REAL p[3], v[3];
+    p[0] = a/R;
+    p[1] = b/R;
+    p[2] = c/R;
+
+    std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
+    grav_in_point(&out, p, v);
+    std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
+
+
+    grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;
+
+
 }
 
 void Scene3D::drawFigure()
@@ -323,6 +406,7 @@ void Scene3D::drawFigure()
 
     glVertexPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyVertexArray);
     glColorPointer(3, GL_FLOAT, sizeof(CVertex3), StrMyColorArray);
+
 
     glDrawElements(GL_TRIANGLES, 3 * IndexSize, GL_UNSIGNED_INT, StrMyIndexArray);
     glDisableClientState(GL_VERTEX_ARRAY);
@@ -340,5 +424,7 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 
    ptrMousePosition = pe->pos();
 
-   updateGL();
+   update();
 }
+
+
