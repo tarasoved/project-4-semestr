@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     Wido.setFocusPolicy (Qt::StrongFocus);
-    //setCentralWidget(&Wido);
+
+    setCentralWidget(&Wido);
     QHBoxLayout *buttonsLayout = new QHBoxLayout ;
     buttonsLayout->addWidget(&Knopka);
     setLayout(buttonsLayout);
@@ -38,7 +39,3 @@ void MainWindow::on_Knopka_clicked()
     printf("ok!!!!");
 }
 
-void MainWindow::on_Wido_resized()
-{
-
-}

@@ -31,7 +31,6 @@ public:
 private slots:
     void on_Knopka_clicked();
 
-    void on_Wido_resized();
 
 private:
     Ui::MainWindow *ui;

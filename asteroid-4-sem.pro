@@ -30,18 +30,17 @@ SOURCES += \
         mainwindow.cpp \
     predicates.cxx \
     scene3d.cpp \
-    tetgen.cxx \
-    form2.cpp
+    tetgen.cxx
 
 HEADERS += \
     grav_calc.h \
         mainwindow.h \
     scene3d.h \
-    tetgen.h \
-    form2.h
+
+    tetgen.h
 
 FORMS += \
-        mainwindow.ui \
-    form2.ui
+        mainwindow.ui
+
 
 DISTFILES +=

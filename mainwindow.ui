@@ -6,8 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>486</height>
+
+    <width>800</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,7 +82,7 @@
       <item>
        <widget class="QLineEdit" name="lineEdit_A"/>
       </item>
-     </layout>
+      </layout>
     </item>
    </layout>
   </widget>
@@ -90,8 +91,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
-     <height>25</height>
+
+     <width>800</width>
+     <height>22</height>
+
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -135,6 +138,7 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+
  <customwidgets>
   <customwidget>
    <class>Scene3D</class>
@@ -142,6 +146,7 @@
    <header>scene3d.h</header>
   </customwidget>
  </customwidgets>
+
  <resources/>
  <connections/>
 </ui>

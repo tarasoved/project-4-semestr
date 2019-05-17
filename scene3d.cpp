@@ -265,7 +265,7 @@ void Scene3D::my_getArrays()
         std::cout << "file does not open" << std::endl;
     }
 
-    fin.open("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt");
+    fin.open("../app2/database/pallas.txt");
     tetrahedralization(&in, &out, &behavior, &fin);
     fin.close();
 
