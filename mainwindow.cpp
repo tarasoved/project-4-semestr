@@ -1,13 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "scene3d.h"
+#include "grav_calc.h"
+#include <QFileDialog>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //setCentralWidget(&Wido);
 
 }
 
@@ -15,20 +17,21 @@ void MainWindow::help()
 {
 
 }
-void MainWindow::Import_file()
-{
-   // Wido.fin.open("../app2/database/pallas.txt");
-    //tetrahedralization(&in, &out, &behavior, &fin);
-    //fin.close();
-}
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void MainWindow::on_Knopka_clicked()
+
+
+void MainWindow::on_Import_file_triggered()
 {
-    printf("ok!!!!");
+    QString path = QFileDialog::getOpenFileName(this,
+    tr("Open Address Book"), "",
+    tr("txt (*.txt);;All Files (*)"));
+    Wido.my_getArrays(path.toStdString());
+    std::cout<<"1111";
 }
 
