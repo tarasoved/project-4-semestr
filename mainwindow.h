@@ -21,7 +21,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Scene3D Wido;
+    //Scene3D Wido;
     QMenuBar menuBar;
     QMenu menuFile;
     QMenu menuHelp;

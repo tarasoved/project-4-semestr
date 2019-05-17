@@ -15,6 +15,7 @@
 #include "tetgen.h"
 #include "grav_calc.h"
 
+
 struct CFace{
     int v1,v2,v3;
 };
@@ -179,7 +180,7 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    drawAxis();
-   drawArrow();
+   if(this->flag_arr) drawArrow();
    drawFigure();
 }
 
@@ -385,9 +386,9 @@ void Scene3D::CalcPoint(REAL a, REAL b, REAL c) {
     p[1] = b/R;
     p[2] = c/R;
 
-    std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
+    //std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
     grav_in_point(&out, p, v);
-    std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
+    //std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
 
 
     grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;

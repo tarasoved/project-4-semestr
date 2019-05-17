@@ -46,7 +46,6 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void translate_up();
 
     void drawArrow();
-
     void drawAxis();
     void defaultScene();
     void my_getArrays();
@@ -66,5 +65,6 @@ protected:
 
    public:
       Scene3D(QWidget* parent = 0);
+      int flag_arr;
 };
 #endif
