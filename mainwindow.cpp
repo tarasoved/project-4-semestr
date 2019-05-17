@@ -7,14 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Wido.setFocusPolicy (Qt::StrongFocus);
-
-    setCentralWidget(&Wido);
-    QHBoxLayout *buttonsLayout = new QHBoxLayout ;
-    buttonsLayout->addWidget(&Knopka);
-    setLayout(buttonsLayout);
-
-
+    //setCentralWidget(&Wido);
 
 }
 
