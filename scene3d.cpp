@@ -254,7 +254,7 @@ void Scene3D::defaultScene()
 
 void Scene3D::my_getArrays()
 {
-    std::ifstream file ("../app2/database/pallas.txt", std::ifstream::in);
+    std::ifstream file ("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt", std::ifstream::in);
     if (!file)
             std::perror("ifstream");
 
