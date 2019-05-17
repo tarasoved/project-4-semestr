@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QOpenGLWidget>
 #include <QPushButton>
+#include <QMenuBar>
+#include <QMenu>
 #include "scene3d.h"
 
 
@@ -20,11 +22,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     Scene3D Wido;
+    QMenuBar menuBar;
+    QMenu menuFile;
+    QMenu menuHelp;
     QPushButton Knopka;
 
 
 private slots:
     void on_Knopka_clicked();
+
 
 private:
     Ui::MainWindow *ui;

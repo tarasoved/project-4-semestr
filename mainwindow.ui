@@ -6,6 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
+
     <width>800</width>
     <height>800</height>
    </rect>
@@ -15,15 +16,73 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QPushButton" name="Knopka">
-      <property name="text">
-       <string>Рассчитать</string>
-      </property>
-     </widget>
+    <item row="2" column="0" colspan="2">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="Scene3D" name="Wido"/>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMaximumSize</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>X:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_X"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Y:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Y"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Z:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_Z"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="Knopka">
+          <property name="text">
+           <string>Рассчитать</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
-    <item row="0" column="0">
-     <widget class="QOpenGLWidget" name="Wido"/>
+    <item row="3" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMaximumSize</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Ответ:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_A"/>
+      </item>
+      </layout>
     </item>
    </layout>
   </widget>
@@ -32,8 +91,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
+
      <width>800</width>
      <height>22</height>
+
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -77,6 +138,15 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+
+ <customwidgets>
+  <customwidget>
+   <class>Scene3D</class>
+   <extends>QOpenGLWidget</extends>
+   <header>scene3d.h</header>
+  </customwidget>
+ </customwidgets>
+
  <resources/>
  <connections/>
 </ui>
