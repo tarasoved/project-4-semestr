@@ -29,7 +29,6 @@ public:
 
 private slots:
     void on_Knopka_clicked();
-    void on_Wido_resized();
     void on_Import_file_triggered();
 
 
@@ -37,6 +36,7 @@ private:
     Ui::MainWindow *ui;
     void Import_file();
     void help();
+    void free_main_window();
 
 };
 
