@@ -27,10 +27,8 @@ public:
     QMenu menuHelp;
     QPushButton Knopka;
 
-
 private slots:
-    void on_Knopka_clicked();
-
+      void on_Import_file_triggered();
 
 private:
     Ui::MainWindow *ui;
