@@ -48,14 +48,6 @@ void Scene3D::initializeGL()
    glShadeModel(GL_FLAT);
    glEnable(GL_CULL_FACE);
 
-   my_getArrays();
-
-   //CalcPoint();
-
-   //getVertexArray();
-   //getColorArray();
-   //getIndexArray();
-
    glEnableClientState(GL_VERTEX_ARRAY);
    glEnableClientState(GL_COLOR_ARRAY);
 }
@@ -259,9 +251,9 @@ void Scene3D::defaultScene()
    xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
 }
 
-void Scene3D::my_getArrays()
+void Scene3D::my_getArrays(std::string path)
 {
-    std::ifstream file ("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt", std::ifstream::in);
+    std::ifstream file (path, std::ifstream::in);
     if (!file)
             std::perror("ifstream");
 
@@ -272,8 +264,7 @@ void Scene3D::my_getArrays()
         std::cout << "file does not open" << std::endl;
     }
 
-
-    fin.open("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt");
+   fin.open(path);
     tetrahedralization(&in, &out, &behavior, &fin);
     fin.close();
 
