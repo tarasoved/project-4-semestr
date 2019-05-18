@@ -9,6 +9,7 @@
 REAL triple_product(REAL *a, REAL *b, REAL *c);
 void grav_in_point(tetgenio *out, REAL *p, REAL *v);
 void tetrahedralization(tetgenio *in, tetgenio *out, tetgenbehavior *behavior, std::ifstream *fin);
+void free_grav_calc();
 
 #endif // GRAV_CALC
 

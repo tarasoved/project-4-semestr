@@ -1,13 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "scene3d.h"
-
 #include <unistd.h>
-
-QString xxx, yyy, zzz;
-#include "grav_calc.h"
 #include <QFileDialog>
+#include <QString>
 
+static QString xxx, yyy, zzz;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,25 +15,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Wido->setFocusPolicy (Qt::ClickFocus);
     ui->Wido->flag_arr = 0;
     ui->Wido->flag_pnt = 0;
-    //setCentralWidget(&Wido);
-    QHBoxLayout *buttonsLayout = new QHBoxLayout ;
-    buttonsLayout->addWidget(&Knopka);
-    setLayout(buttonsLayout);
-
-}
+  }
 
 void MainWindow::help()
 {
 
 }
 
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
 
 void MainWindow::on_Knopka_clicked()
 {
@@ -54,16 +44,13 @@ void MainWindow::on_Knopka_clicked()
                                 + QString::number(ui->Wido->v[2]) + ')');
 }
 
-  void MainWindow::on_Import_file_triggered()
+void MainWindow::on_Import_file_triggered()
 {
-    QString path = QFileDialog::getOpenFileName(this,
-    tr("Open Address Book"), "",
-    tr("txt (*.txt);;All Files (*)"));
-    Wido.my_getArrays(path.toStdString());
-    std::cout<<"1111";
+    QString path = QFileDialog::getOpenFileName(this,tr("Open asteroid"), "", tr("txt (*.txt);;All Files (*)"));
+    ui->Wido->my_getArrays(path.toStdString());
+    ui->Wido->update();
 }
 
-void MainWindow::on_Wido_resized()
-{
+void free_main_window()
+{}
 
-}

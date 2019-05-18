@@ -29,11 +29,11 @@ struct CColor3{
     GLfloat r,g,b;
 };
 
-int IndexSize;
+static int IndexSize;
 
-CFace * StrMyIndexArray;
-CVertex3 * StrMyVertexArray;
-CColor3 * StrMyColorArray;
+static CFace * StrMyIndexArray;
+static CVertex3 * StrMyVertexArray;
+static CColor3 * StrMyColorArray;
 
 Scene3D::Scene3D(QWidget* parent) : QOpenGLWidget(parent)
 {
@@ -234,11 +234,6 @@ void Scene3D::drawArrow()
 
 }
 
-void Scene3D::mouseReleaseEvent(QMouseEvent* pe)
-{
-
-}
-
 void Scene3D::wheelEvent(QWheelEvent* pe)
 {
    if ((pe->delta())>0) scale_plus(); else if ((pe->delta())<0) scale_minus();
@@ -379,17 +374,8 @@ void Scene3D::my_getArrays(std::string path)
 
 void Scene3D::CalcPoint() {
 
-    //REAL p[3], v[3];
-    //p[0] = a/R;
-    //p[1] = b/R;
-    //p[2] = c/R;
-
-    //std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
-    grav_in_point(&out, p, v);
-    //std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
-
-
-    grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;
+     grav_in_point(&out, p, v);
+     grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;
 
 
 }
@@ -426,4 +412,6 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
    update();
 }
 
+void free_scene3D(){
 
+}
