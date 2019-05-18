@@ -67,3 +67,5 @@ void tetrahedralization(tetgenio *in, tetgenio *out, tetgenbehavior *behavior, s
     tetrahedralize(behavior, in, out);
 }
 
+void free_grav_calc()
+{}

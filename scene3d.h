@@ -52,6 +52,7 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void defaultScene();
     void drawFigure();
     void CalcPoint();
+    void free_scene3D();
 
 protected:
     void initializeGL();
@@ -61,8 +62,6 @@ protected:
     void mousePressEvent(QMouseEvent* pe);
     void wheelEvent(QWheelEvent* pe);
     void mouseMoveEvent(QMouseEvent* pe);
-    void mouseReleaseEvent(QMouseEvent* pe);
-
 
    public:
       Scene3D(QWidget* parent = 0);
