@@ -27,7 +27,6 @@ public:
     QMenu menuHelp;
     QPushButton Knopka;
 
-
 private slots:
     void on_Knopka_clicked();
 

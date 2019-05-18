@@ -14,7 +14,8 @@
 
 #include "tetgen.h"
 #include "grav_calc.h"
-
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 struct CFace{
     int v1,v2,v3;
@@ -49,7 +50,7 @@ void Scene3D::initializeGL()
 
    my_getArrays();
 
-   CalcPoint(0,0.6,0.6);
+   //CalcPoint();
 
    //getVertexArray();
    //getColorArray();
@@ -168,6 +169,11 @@ void Scene3D::translate_up()
 
 void Scene3D::paintGL()
 {
+   if (this->flag_pnt) {
+       CalcPoint();
+       flag_pnt = 0;
+       flag_ans = 1;
+   }
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    glMatrixMode(GL_MODELVIEW);
@@ -180,7 +186,7 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    drawAxis();
-   if(this->flag_arr) drawArrow();
+   if (this->flag_arr) drawArrow();
    drawFigure();
 }
 
@@ -265,6 +271,7 @@ void Scene3D::my_getArrays()
     {
         std::cout << "file does not open" << std::endl;
     }
+
 
     fin.open("/home/nick/Workspace/QtCreator/sem4/final/pallas.txt");
     tetrahedralization(&in, &out, &behavior, &fin);
@@ -379,12 +386,12 @@ void Scene3D::my_getArrays()
     file.close();
 }
 
-void Scene3D::CalcPoint(REAL a, REAL b, REAL c) {
+void Scene3D::CalcPoint() {
 
-    REAL p[3], v[3];
-    p[0] = a/R;
-    p[1] = b/R;
-    p[2] = c/R;
+    //REAL p[3], v[3];
+    //p[0] = a/R;
+    //p[1] = b/R;
+    //p[2] = c/R;
 
     //std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
     grav_in_point(&out, p, v);

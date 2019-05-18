@@ -7,6 +7,10 @@
 QT       += core gui
 QT += opengl
 
+CONFIG += address_sanitizer
+QMAKE_CXXFLAGS += "-fsanitize=address"
+QMAKE_LFLAGS += "-fsanitize=address"
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = asteroid-4-sem
