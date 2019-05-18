@@ -48,17 +48,15 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void translate_up();
 
     void drawArrow();
-    void clicked();
-
     void drawAxis();
     void defaultScene();
     void drawFigure();
-    void CalcPoint(REAL a, REAL b, REAL c);
+    void CalcPoint();
 
 protected:
     void initializeGL();
     void resizeGL(int nWidth, int nHeight);
-    void paintGL();
+
     void keyPressEvent(QKeyEvent* pe);
     void mousePressEvent(QMouseEvent* pe);
     void wheelEvent(QWheelEvent* pe);
@@ -68,7 +66,10 @@ protected:
 
    public:
       Scene3D(QWidget* parent = 0);
-      bool flag;
+
+      int flag_arr, flag_pnt, flag_ans;
+      REAL p[3], v[3];
+      void paintGL();
       void my_getArrays(std::string path);
       std::string path;
 
