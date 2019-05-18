@@ -14,6 +14,8 @@
 
 #include "tetgen.h"
 #include "grav_calc.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 struct CFace{
     int v1,v2,v3;
@@ -45,8 +47,6 @@ void Scene3D::initializeGL()
    glEnable(GL_DEPTH_TEST);
    glShadeModel(GL_FLAT);
    glEnable(GL_CULL_FACE);
-
-   CalcPoint(0,0.6,0.6);
 
    glEnableClientState(GL_VERTEX_ARRAY);
    glEnableClientState(GL_COLOR_ARRAY);
@@ -161,6 +161,11 @@ void Scene3D::translate_up()
 
 void Scene3D::paintGL()
 {
+   if (this->flag_pnt) {
+       CalcPoint();
+       flag_pnt = 0;
+       flag_ans = 1;
+   }
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
    glMatrixMode(GL_MODELVIEW);
@@ -173,7 +178,7 @@ void Scene3D::paintGL()
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
 
    drawAxis();
-   drawArrow();
+   if (this->flag_arr) drawArrow();
    drawFigure();
 }
 
@@ -248,7 +253,6 @@ void Scene3D::defaultScene()
 
 void Scene3D::my_getArrays(std::string path)
 {
-
     std::ifstream file (path, std::ifstream::in);
     if (!file)
             std::perror("ifstream");
@@ -260,7 +264,7 @@ void Scene3D::my_getArrays(std::string path)
         std::cout << "file does not open" << std::endl;
     }
 
-    fin.open(path);
+   fin.open(path);
     tetrahedralization(&in, &out, &behavior, &fin);
     fin.close();
 
@@ -373,16 +377,16 @@ void Scene3D::my_getArrays(std::string path)
     file.close();
 }
 
-void Scene3D::CalcPoint(REAL a, REAL b, REAL c) {
+void Scene3D::CalcPoint() {
 
-    REAL p[3], v[3];
-    p[0] = a/R;
-    p[1] = b/R;
-    p[2] = c/R;
+    //REAL p[3], v[3];
+    //p[0] = a/R;
+    //p[1] = b/R;
+    //p[2] = c/R;
 
-    std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
+    //std::cout << "вызываем в точке: " << p[0] << ' ' << p[1] << ' ' << p[2] << std::endl;
     grav_in_point(&out, p, v);
-    std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
+    //std::cout <<"ответ в точке: " << v[0] << ' ' << v[1] << ' ' << v[2] << std::endl;
 
 
     grav_Arrow.x1 = p[0]*R; grav_Arrow.y1 = p[1]*R; grav_Arrow.z1 = p[2]*R; grav_Arrow.x2 = v[0]*R; grav_Arrow.y2 = v[1]*R; grav_Arrow.z2 = v[2]*R;
@@ -411,7 +415,6 @@ void Scene3D::mousePressEvent(QMouseEvent* pe)
 {
    ptrMousePosition = pe->pos();
 }
-
 
 void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 {

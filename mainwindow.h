@@ -21,14 +21,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Scene3D Wido;
+    //Scene3D Wido;
     QMenuBar menuBar;
     QMenu menuFile;
     QMenu menuHelp;
     QPushButton Knopka;
 
 private slots:
-      void on_Import_file_triggered();
+    void on_Knopka_clicked();
+    void on_Wido_resized();
+    void on_Import_file_triggered();
+
 
 private:
     Ui::MainWindow *ui;
