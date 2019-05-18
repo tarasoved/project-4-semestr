@@ -6,6 +6,7 @@
 
 #include "tetgen.h"
 #include "grav_calc.h"
+#include <string.h>
 
 class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
 {
@@ -18,9 +19,10 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     GLfloat nSca;
     GLfloat R;
 
+    int a,b;
+    std::ifstream fin;
     tetgenio in, out;
     tetgenbehavior behavior;
-    std::ifstream fin;
 
     struct Arrow
     {
@@ -48,7 +50,6 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void drawArrow();
     void drawAxis();
     void defaultScene();
-    void my_getArrays();
     void drawFigure();
     void CalcPoint();
 
@@ -65,8 +66,12 @@ protected:
 
    public:
       Scene3D(QWidget* parent = 0);
+
       int flag_arr, flag_pnt, flag_ans;
       REAL p[3], v[3];
       void paintGL();
+      void my_getArrays(std::string path);
+      std::string path;
+
 };
 #endif
