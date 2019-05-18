@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    Wido.setFocusPolicy (Qt::ClickFocus);
+
 
 }
 

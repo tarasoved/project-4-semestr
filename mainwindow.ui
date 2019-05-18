@@ -6,7 +6,6 @@
    <rect>
     <x>0</x>
     <y>0</y>
-
     <width>800</width>
     <height>800</height>
    </rect>
@@ -19,7 +18,11 @@
     <item row="2" column="0" colspan="2">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="Scene3D" name="Wido"/>
+       <widget class="Scene3D" name="Wido">
+        <property name="focusPolicy">
+         <enum>Qt::ClickFocus</enum>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -34,7 +37,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_X"/>
+         <widget class="QLineEdit" name="lineEdit_X">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_2">
@@ -44,7 +51,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_Y"/>
+         <widget class="QLineEdit" name="lineEdit_Y">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_3">
@@ -54,10 +65,17 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_Z"/>
+         <widget class="QLineEdit" name="lineEdit_Z">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="Knopka">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="text">
            <string>Рассчитать</string>
           </property>
@@ -82,7 +100,7 @@
       <item>
        <widget class="QLineEdit" name="lineEdit_A"/>
       </item>
-      </layout>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -91,10 +109,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-
      <width>800</width>
      <height>22</height>
-
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -138,7 +154,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
-
  <customwidgets>
   <customwidget>
    <class>Scene3D</class>
@@ -146,7 +161,6 @@
    <header>scene3d.h</header>
   </customwidget>
  </customwidgets>
-
  <resources/>
  <connections/>
 </ui>
