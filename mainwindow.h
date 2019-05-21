@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow
 
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     //Scene3D Wido;
     QMenuBar menuBar;

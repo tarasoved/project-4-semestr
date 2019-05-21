@@ -26,13 +26,13 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
 
     struct Arrow
     {
-        GLfloat x1 = 1.0;
-        GLfloat y1 = 1.0;
-        GLfloat z1 = 1.0;
+        GLfloat x1 = 1.0f;
+        GLfloat y1 = 1.0f;
+        GLfloat z1 = 1.0f;
 
-        GLfloat x2 = 0.8;
-        GLfloat y2 = 0.8;
-        GLfloat z2 = 0.8;
+        GLfloat x2 = 0.8f;
+        GLfloat y2 = 0.8f;
+        GLfloat z2 = 0.8f;
     };
     Arrow grav_Arrow;
 
@@ -64,7 +64,7 @@ protected:
     void mouseMoveEvent(QMouseEvent* pe);
 
    public:
-      Scene3D(QWidget* parent = 0);
+      Scene3D(QWidget* parent = nullptr);
 
       int flag_arr, flag_pnt, flag_ans;
       REAL p[3], v[3];
