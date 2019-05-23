@@ -259,7 +259,7 @@ void Scene3D::my_getArrays(std::string path)
         std::cout << "file does not open" << std::endl;
     }
 
-   fin.open(path);
+    fin.open(path);
     tetrahedralization(&in, &out, &behavior, &fin);
     fin.close();
 

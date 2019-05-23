@@ -8,7 +8,7 @@ QT       += core gui
 QT += opengl
 
 CONFIG += address_sanitizer
-QMAKE_CXXFLAGS += "-fsanitize=address"
+QMAKE_CXXFLAGS += "-fsanitize=address -std=c++11"
 QMAKE_LFLAGS += "-fsanitize=address"
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
