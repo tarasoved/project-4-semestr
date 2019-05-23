@@ -3360,7 +3360,7 @@ inline void tetgenmesh::point2shorg(point pa, face& searchsh)
   if ((point) searchsh.sh[3] == pa) {
     searchsh.shver = 0;
   } else if ((point) searchsh.sh[4] == pa) {
-    searchsh.shver = (searchsh.sh[5] != NULL ? 2 : 1); 
+    searchsh.shver = (searchsh.sh[5] != nullptr ? 2 : 1);
   } else {
     searchsh.shver = 4;
   }
@@ -3377,7 +3377,7 @@ inline tetgenmesh::point tetgenmesh::farsorg(face& s)
   while (1) {
     senext2(travesh, neighsh);
     spivotself(neighsh); 
-    if (neighsh.sh == NULL) break;
+    if (neighsh.sh == nullptr) break;
     if (sorg(neighsh) != sorg(travesh)) sesymself(neighsh);
     senext2(neighsh, travesh); 
   }
