@@ -24,6 +24,7 @@ void MainWindow::help()
 
 MainWindow::~MainWindow()
 {
+    //ui->Wido->free_scene3D();
     delete ui;
 }
 
