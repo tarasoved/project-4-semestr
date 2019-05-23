@@ -263,6 +263,7 @@ void Scene3D::my_getArrays(std::string path)
     tetrahedralization(&in, &out, &behavior, &fin);
     fin.close();
 
+
     std::string s;
     int a, b, n_, i;
     GLfloat n, max = 0, min = 1000, max_ = 0;
@@ -414,6 +415,9 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
    update();
 }
 
-void free_scene3D(){
-
+void Scene3D::free_scene3D() {
+   in.~tetgenio();
+   out.~tetgenio();
 }
+
+

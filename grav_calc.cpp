@@ -59,17 +59,19 @@ void tetrahedralization(tetgenio *in, tetgenio *out, tetgenbehavior *behavior, s
     int i;
     *fin >> in->numberofpoints;
     *fin >> in->numberoftrifaces;
-    REAL *points = new REAL [static_cast<unsigned long long>(in->numberofpoints * 3)];
+    REAL *points = new REAL [in->numberofpoints * 3];
     for(i = 0; i < (in->numberofpoints * 3); i++)
         *fin >> points[i];
-    int *faces = new int[static_cast<unsigned long long>(in->numberoftrifaces * 3)];
+    int *faces = new int[in->numberoftrifaces * 3];
     for(i = 0; i < (in->numberoftrifaces * 3); i++)
         *fin >> faces[i];
+    in->pointlist = new REAL[in->numberofpoints * 3];
+    in->trifacelist = new int[in->numberoftrifaces * 3 ];
     in->pointlist = points;
     in->trifacelist = faces;
     tetrahedralize(behavior, in, out);
-    delete []points;
-    delete []faces;
+    //delete []points;
+    //delete []faces;
 }
 
 void free_grav_calc()

@@ -52,7 +52,7 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void defaultScene();
     void drawFigure();
     void CalcPoint();
-    void free_scene3D();
+
 
 protected:
     void initializeGL();
@@ -65,7 +65,7 @@ protected:
 
    public:
       Scene3D(QWidget* parent = nullptr);
-
+      void free_scene3D();
       int flag_arr, flag_pnt, flag_ans;
       REAL p[3], v[3];
       void paintGL();
