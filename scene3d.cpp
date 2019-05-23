@@ -334,21 +334,21 @@ void Scene3D::my_getArrays(std::string path)
             std::cout << "wrong number of vertexes";
         }
         n_ = atoi(s.c_str());
-        StrMyIndexArray[i].v1= static_cast<unsigned long long>(n_ - 1);
+        StrMyIndexArray[i].v1= (n_ - 1);
 
         file >> s;
         if (file.eof()){
             std::cout << "wrong number of vertexes";
         }
         n_ = atoi(s.c_str());
-        StrMyIndexArray[i].v2 = static_cast<unsigned long long>(n_ - 1);
+        StrMyIndexArray[i].v2 = (n_ - 1);
 
         file >> s;
         if (file.eof()){
             std::cout << "wrong number of vertexes";
         }
         n_ = atoi(s.c_str());
-        StrMyIndexArray[i].v3 =static_cast<unsigned long long>(n_ - 1);
+        StrMyIndexArray[i].v3 =(n_ - 1);
     }
     R = 0.75f/max;
     std::cout << "max = " << max << ", R = " << R << std::endl;
