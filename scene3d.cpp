@@ -37,7 +37,7 @@ static CColor3 * StrMyColorArray;
 
 Scene3D::Scene3D(QWidget* parent) : QOpenGLWidget(parent)
 {
-   xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
+   zTra=0; xRot=-90; yRot=0; zRot=0; nSca=1; xTra=0;
 }
 
 void Scene3D::initializeGL()
@@ -107,6 +107,14 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
       translate_up();
    break;
 
+   case Qt::Key_A:
+      translate_left();
+   break;
+
+   case Qt::Key_D:
+      translate_right();
+   break;
+
    case Qt::Key_Space:
       defaultScene();
    break;
@@ -152,11 +160,22 @@ void Scene3D::rotate_right()
 void Scene3D::translate_down()
 {
    zTra -= 0.05f;
+
 }
 
 void Scene3D::translate_up()
 {
    zTra += 0.05f;
+}
+
+void Scene3D::translate_left()
+{
+   xTra -= 0.05f;
+}
+
+void Scene3D::translate_right()
+{
+   xTra += 0.05f;
 }
 
 void Scene3D::paintGL()
@@ -172,7 +191,7 @@ void Scene3D::paintGL()
    glLoadIdentity();
 
    glScalef(nSca, nSca, nSca);
-   glTranslatef(0.0f, zTra, 0.0f);
+   glTranslatef(xTra, zTra, 0.0f);
    glRotatef(xRot, 1.0f, 0.0f, 0.0f);
    glRotatef(yRot, 0.0f, 1.0f, 0.0f);
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
@@ -243,7 +262,7 @@ void Scene3D::wheelEvent(QWheelEvent* pe)
 
 void Scene3D::defaultScene()
 {
-   xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
+   xRot=-90; yRot=0; zRot=0; xTra=0; zTra=0; nSca=1;
 }
 
 void Scene3D::my_getArrays(std::string path)

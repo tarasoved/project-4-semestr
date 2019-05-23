@@ -16,10 +16,10 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     GLfloat yRot;
     GLfloat zRot;
     GLfloat zTra;
+    GLfloat xTra;
     GLfloat nSca;
     GLfloat R;
 
-    int a,b;
     std::ifstream fin;
     tetgenio in, out;
     tetgenbehavior behavior;
@@ -46,6 +46,8 @@ class Scene3D : public QOpenGLWidget, protected QOpenGLFunctions
     void rotate_right();
     void translate_down();
     void translate_up();
+    void translate_left();
+    void translate_right();
 
     void drawArrow();
     void drawAxis();
