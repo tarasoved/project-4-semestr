@@ -15,9 +15,9 @@ void grav_in_point(tetgenio *out, REAL *p, REAL *v) {
     REAL a[3], b[3], c[3];
     REAL K;
 
-    v[0] = 0;
-    v[1] = 0;
-    v[2] = 0;
+    v[0] = 0.0;
+    v[1] = 0.0;
+    v[2] = 0.0;
 
     for(i = 0; i < out->numberoftetrahedra; i++) {
         m1 = out->tetrahedronlist[i * 4];
@@ -59,10 +59,10 @@ void tetrahedralization(tetgenio *in, tetgenio *out, tetgenbehavior *behavior, s
     int i;
     *fin >> in->numberofpoints;
     *fin >> in->numberoftrifaces;
-    REAL *points = new REAL[in->numberofpoints * 3];
+    REAL *points = new REAL [static_cast<unsigned long long>(in->numberofpoints * 3)];
     for(i = 0; i < (in->numberofpoints * 3); i++)
         *fin >> points[i];
-    int *faces = new int[in->numberoftrifaces * 3];
+    int *faces = new int[static_cast<unsigned long long>(in->numberoftrifaces * 3)];
     for(i = 0; i < (in->numberoftrifaces * 3); i++)
         *fin >> faces[i];
     in->pointlist = points;
