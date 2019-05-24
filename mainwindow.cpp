@@ -46,6 +46,7 @@ void MainWindow::on_Import_file_triggered()
     QString path = QFileDialog::getOpenFileName(this,tr("Open asteroid"), "", tr("txt (*.txt);;All Files (*)"));
     ui->Wido->my_getArrays(path.toStdString());
     ui->Wido->update();
+    path.clear();
 }
 
 void MainWindow::free_main_window()
@@ -56,4 +57,5 @@ void MainWindow::free_main_window()
 
 void MainWindow::on_help_triggered()
 {
-   }
+
+}
