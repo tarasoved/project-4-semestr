@@ -23,20 +23,17 @@ public:
     ~MainWindow();
     //Scene3D Wido;
     QMenuBar menuBar;
-    QMenu menuFile;
-    QMenu menuHelp;
     QPushButton Knopka;
+    void free_main_window();
 
 private slots:
     void on_Knopka_clicked();
     void on_Import_file_triggered();
-
+    void on_help_triggered();
 
 private:
     Ui::MainWindow *ui;
     void Import_file();
-    void help();
-    void free_main_window();
 
 };
 

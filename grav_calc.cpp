@@ -70,8 +70,8 @@ void tetrahedralization(tetgenio *in, tetgenio *out, tetgenbehavior *behavior, s
     in->pointlist = points;
     in->trifacelist = faces;
     tetrahedralize(behavior, in, out);
-    //delete []points;
-    //delete []faces;
+    delete[] points;
+    delete[] faces;
 }
 
 void free_grav_calc()

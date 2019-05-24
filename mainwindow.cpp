@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "scene3d.h"
 #include <unistd.h>
+#include <stdlib.h>
 #include <QFileDialog>
 #include <QString>
 
@@ -16,11 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Wido->flag_arr = 0;
     ui->Wido->flag_pnt = 0;
   }
-
-void MainWindow::help()
-{
-
-}
 
 MainWindow::~MainWindow()
 {
@@ -52,6 +48,12 @@ void MainWindow::on_Import_file_triggered()
     ui->Wido->update();
 }
 
-void free_main_window()
-{}
+void MainWindow::free_main_window()
+{
+  ui->Wido->free_scene3D();
+}
 
+
+void MainWindow::on_help_triggered()
+{
+   }

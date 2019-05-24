@@ -1,0 +1,35 @@
+digraph "tetgenmesh"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="tetgenmesh",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cavesegshlist\ncaveencseglist\ncavebdrylist\nencseglist\ncaveencshlist\ncavetetshlist\ncavetetlist\ncaveoldtetlist\nunflipqueue\ncaveshlist\n..." ,fontname="Helvetica"];
+  Node2 [label="tetgenmesh::arraypool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenmesh_1_1arraypool.html"];
+  Node1 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bgm" ,fontname="Helvetica"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" b" ,fontname="Helvetica"];
+  Node3 [label="tetgenbehavior",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenbehavior.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" recentsh" ,fontname="Helvetica"];
+  Node4 [label="tetgenmesh::face",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenmesh_1_1face.html"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" flipstack" ,fontname="Helvetica"];
+  Node5 [label="tetgenmesh::badface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenmesh_1_1badface.html"];
+  Node4 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ss" ,fontname="Helvetica"];
+  Node5 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" nextitem" ,fontname="Helvetica"];
+  Node6 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tt" ,fontname="Helvetica"];
+  Node6 [label="tetgenmesh::triface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenmesh_1_1triface.html"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" recenttet" ,fontname="Helvetica"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" subfaces\npoints\nsubsegs\nbadsubsegs\nbadtetrahedrons\ntetrahedrons\ntet2segpool\ntet2subpool\nflippool\nbadsubfacs\n..." ,fontname="Helvetica"];
+  Node7 [label="tetgenmesh::memorypool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenmesh_1_1memorypool.html"];
+  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" addin\nin" ,fontname="Helvetica"];
+  Node8 [label="tetgenio",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtetgenio.html"];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vfacetlist" ,fontname="Helvetica"];
+  Node9 [label="tetgenio::vorofacet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structtetgenio_1_1vorofacet.html"];
+  Node10 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" facetlist" ,fontname="Helvetica"];
+  Node10 [label="tetgenio::facet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structtetgenio_1_1facet.html"];
+  Node11 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" polygonlist" ,fontname="Helvetica"];
+  Node11 [label="tetgenio::polygon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structtetgenio_1_1polygon.html"];
+  Node12 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pointparamlist" ,fontname="Helvetica"];
+  Node12 [label="tetgenio::pointparam",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structtetgenio_1_1pointparam.html"];
+  Node13 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vedgelist" ,fontname="Helvetica"];
+  Node13 [label="tetgenio::voroedge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structtetgenio_1_1voroedge.html"];
+}
