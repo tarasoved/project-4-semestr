@@ -1,0 +1,56 @@
+\hypertarget{classtetgenmesh_1_1arraypool}{}\section{tetgenmesh\+:\+:arraypool Class Reference}
+\label{classtetgenmesh_1_1arraypool}\index{tetgenmesh\+::arraypool@{tetgenmesh\+::arraypool}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a19030126ef81a9ff3c4aca35f0347cdc}\label{classtetgenmesh_1_1arraypool_a19030126ef81a9ff3c4aca35f0347cdc}} 
+void {\bfseries restart} ()
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a3069be62301a28c1e89201008e838cf8}\label{classtetgenmesh_1_1arraypool_a3069be62301a28c1e89201008e838cf8}} 
+void {\bfseries poolinit} (int sizeofobject, int log2objperblk)
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a3389d606b99e572c2d381fa51bc3793b}\label{classtetgenmesh_1_1arraypool_a3389d606b99e572c2d381fa51bc3793b}} 
+char $\ast$ {\bfseries getblock} (int objectindex)
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_af7ead1b15097f61c7082568ce1121f05}\label{classtetgenmesh_1_1arraypool_af7ead1b15097f61c7082568ce1121f05}} 
+void $\ast$ {\bfseries lookup} (int objectindex)
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_afb546c70f7728e3e0d58e2aada464437}\label{classtetgenmesh_1_1arraypool_afb546c70f7728e3e0d58e2aada464437}} 
+int {\bfseries newindex} (void $\ast$$\ast$newptr)
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a62a21b86eafefd79c951e85a9b180d0f}\label{classtetgenmesh_1_1arraypool_a62a21b86eafefd79c951e85a9b180d0f}} 
+{\bfseries arraypool} (int sizeofobject, int log2objperblk)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a469ac2a2833a25faa0f99ab011122e2d}\label{classtetgenmesh_1_1arraypool_a469ac2a2833a25faa0f99ab011122e2d}} 
+int {\bfseries objectbytes}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a2b6ba46461d5c8f0e6043bdd111246dd}\label{classtetgenmesh_1_1arraypool_a2b6ba46461d5c8f0e6043bdd111246dd}} 
+int {\bfseries objectsperblock}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_ab61ada3b2fc49879a160a919e9994279}\label{classtetgenmesh_1_1arraypool_ab61ada3b2fc49879a160a919e9994279}} 
+int {\bfseries log2objectsperblock}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a662031b2a9978bfc3be39ce90bd3bf0a}\label{classtetgenmesh_1_1arraypool_a662031b2a9978bfc3be39ce90bd3bf0a}} 
+int {\bfseries objectsperblockmark}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_aa9ced327d45678f31b4e7f8e75aff861}\label{classtetgenmesh_1_1arraypool_aa9ced327d45678f31b4e7f8e75aff861}} 
+int {\bfseries toparraylen}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a3a4e28a88226f1dd777773fe45094650}\label{classtetgenmesh_1_1arraypool_a3a4e28a88226f1dd777773fe45094650}} 
+char $\ast$$\ast$ {\bfseries toparray}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_a23345232309fd68d2e3afa6d017299b0}\label{classtetgenmesh_1_1arraypool_a23345232309fd68d2e3afa6d017299b0}} 
+long {\bfseries objects}
+\item 
+\mbox{\Hypertarget{classtetgenmesh_1_1arraypool_af264f265d5752e75f50adea472ecd59f}\label{classtetgenmesh_1_1arraypool_af264f265d5752e75f50adea472ecd59f}} 
+unsigned long {\bfseries totalmemory}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tetgen.\+h\item 
+tetgen.\+cxx\end{DoxyCompactItemize}

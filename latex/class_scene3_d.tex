@@ -1,0 +1,135 @@
+\hypertarget{class_scene3_d}{}\section{Scene3D Class Reference}
+\label{class_scene3_d}\index{Scene3D@{Scene3D}}
+
+
+Inheritance diagram for Scene3D\+:
+% FIG 0
+
+
+Collaboration diagram for Scene3D\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene3_d_ac8e10fe0b55a8f6330d5407d48031ce2}\label{class_scene3_d_ac8e10fe0b55a8f6330d5407d48031ce2}} 
+{\bfseries Scene3D} (Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{class_scene3_d_a0f20c3664166ef70328f2b671509495f}\label{class_scene3_d_a0f20c3664166ef70328f2b671509495f}} 
+void \hyperlink{class_scene3_d_a0f20c3664166ef70328f2b671509495f}{paint\+GL} ()
+\begin{DoxyCompactList}\small\item\em Full drawing. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_a5e71ee5b49ecd2e7cf520ada9117c07a}{free\+\_\+scene3D} ()
+\begin{DoxyCompactList}\small\item\em Avoiding memory leaks. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_a06303e7fef9f24731a798a5559329e8b}{my\+\_\+get\+Arrays} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Creation of arrow with verteices and colors for triangles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene3_d_ab54c7745997c7df67ef76749a872c83d}\label{class_scene3_d_ab54c7745997c7df67ef76749a872c83d}} 
+int {\bfseries flag\+\_\+arr}
+\item 
+\mbox{\Hypertarget{class_scene3_d_a9e8551cf83aaf3e1f0672f6236d67c48}\label{class_scene3_d_a9e8551cf83aaf3e1f0672f6236d67c48}} 
+int {\bfseries flag\+\_\+pnt}
+\item 
+\mbox{\Hypertarget{class_scene3_d_a2882d12ce31ae4697b8071e5fc9da116}\label{class_scene3_d_a2882d12ce31ae4697b8071e5fc9da116}} 
+int {\bfseries flag\+\_\+ans}
+\item 
+\mbox{\Hypertarget{class_scene3_d_af2245f2c6bca54e69ea5a4b7590710e5}\label{class_scene3_d_af2245f2c6bca54e69ea5a4b7590710e5}} 
+R\+E\+AL {\bfseries p} \mbox{[}3\mbox{]}
+\item 
+\mbox{\Hypertarget{class_scene3_d_a6f8a9f79c1ab91110d4ed46ff744044b}\label{class_scene3_d_a6f8a9f79c1ab91110d4ed46ff744044b}} 
+R\+E\+AL {\bfseries v} \mbox{[}3\mbox{]}
+\item 
+\mbox{\Hypertarget{class_scene3_d_abdc28d46dadf3b57dc491dbcb5db2db2}\label{class_scene3_d_abdc28d46dadf3b57dc491dbcb5db2db2}} 
+std\+::string {\bfseries path}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene3_d_a95b6cf07058cff64f42127f83c01a3a8}\label{class_scene3_d_a95b6cf07058cff64f42127f83c01a3a8}} 
+void \hyperlink{class_scene3_d_a95b6cf07058cff64f42127f83c01a3a8}{initialize\+GL} ()
+\begin{DoxyCompactList}\small\item\em Initialization of GL. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_ab0541e5e74ceef7a33a54cd48f213ea1}{resize\+GL} (int n\+Width, int n\+Height)
+\begin{DoxyCompactList}\small\item\em Resize of window and G\+L\+Widget. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_afb03a7f38030112d169bf46b77b75cb7}{key\+Press\+Event} (Q\+Key\+Event $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Reaction when some key is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_aab704c7ab690b08003db9fa0b986c8b2}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Processing of mouse events. \end{DoxyCompactList}\item 
+void \hyperlink{class_scene3_d_a53e06f80bbe9a6db3979ba050055ff8c}{wheel\+Event} (Q\+Wheel\+Event $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Processing of information of mouse\textquotesingle{}s wheel. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene3_d_affe91c91b89ad74d09c81906cd15cd69}\label{class_scene3_d_affe91c91b89ad74d09c81906cd15cd69}} 
+void \hyperlink{class_scene3_d_affe91c91b89ad74d09c81906cd15cd69}{mouse\+Move\+Event} (Q\+Mouse\+Event $\ast$pe)
+\begin{DoxyCompactList}\small\item\em Processing of mouse moves. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene3_d_a5e71ee5b49ecd2e7cf520ada9117c07a}\label{class_scene3_d_a5e71ee5b49ecd2e7cf520ada9117c07a}} 
+\index{Scene3D@{Scene3D}!free\+\_\+scene3D@{free\+\_\+scene3D}}
+\index{free\+\_\+scene3D@{free\+\_\+scene3D}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{free\+\_\+scene3\+D()}{free\_scene3D()}}
+{\footnotesize\ttfamily void Scene3\+D\+::free\+\_\+scene3D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Avoiding memory leaks. 
+
+Ths function will free tetgenio arrows. \mbox{\Hypertarget{class_scene3_d_afb03a7f38030112d169bf46b77b75cb7}\label{class_scene3_d_afb03a7f38030112d169bf46b77b75cb7}} 
+\index{Scene3D@{Scene3D}!key\+Press\+Event@{key\+Press\+Event}}
+\index{key\+Press\+Event@{key\+Press\+Event}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{key\+Press\+Event()}{keyPressEvent()}}
+{\footnotesize\ttfamily void Scene3\+D\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{Q\+Key\+Event $\ast$}]{pe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Reaction when some key is pressed. 
+
+Switch of reactions for some key pressed. Functions controling by keyboard are described later. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pe} & Press\+Event -\/ when one of keys is pressed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene3_d_aab704c7ab690b08003db9fa0b986c8b2}\label{class_scene3_d_aab704c7ab690b08003db9fa0b986c8b2}} 
+\index{Scene3D@{Scene3D}!mouse\+Press\+Event@{mouse\+Press\+Event}}
+\index{mouse\+Press\+Event@{mouse\+Press\+Event}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{mouse\+Press\+Event()}{mousePressEvent()}}
+{\footnotesize\ttfamily void Scene3\+D\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{pe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Processing of mouse events. 
+
+Processing of the mouse events when it is pressed \mbox{\Hypertarget{class_scene3_d_a06303e7fef9f24731a798a5559329e8b}\label{class_scene3_d_a06303e7fef9f24731a798a5559329e8b}} 
+\index{Scene3D@{Scene3D}!my\+\_\+get\+Arrays@{my\+\_\+get\+Arrays}}
+\index{my\+\_\+get\+Arrays@{my\+\_\+get\+Arrays}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{my\+\_\+get\+Arrays()}{my\_getArrays()}}
+{\footnotesize\ttfamily void Scene3\+D\+::my\+\_\+get\+Arrays (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Creation of arrow with verteices and colors for triangles. 
+
+Always calling after improting of file. Create an arrow with the location of all vertices. Furthermore, define colors for triangles, depending on their location. \mbox{\Hypertarget{class_scene3_d_ab0541e5e74ceef7a33a54cd48f213ea1}\label{class_scene3_d_ab0541e5e74ceef7a33a54cd48f213ea1}} 
+\index{Scene3D@{Scene3D}!resize\+GL@{resize\+GL}}
+\index{resize\+GL@{resize\+GL}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{resize\+G\+L()}{resizeGL()}}
+{\footnotesize\ttfamily void Scene3\+D\+::resize\+GL (\begin{DoxyParamCaption}\item[{int}]{n\+Width,  }\item[{int}]{n\+Height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Resize of window and G\+L\+Widget. 
+
+G\+L\+Widhet is resizing here \mbox{\Hypertarget{class_scene3_d_a53e06f80bbe9a6db3979ba050055ff8c}\label{class_scene3_d_a53e06f80bbe9a6db3979ba050055ff8c}} 
+\index{Scene3D@{Scene3D}!wheel\+Event@{wheel\+Event}}
+\index{wheel\+Event@{wheel\+Event}!Scene3D@{Scene3D}}
+\subsubsection{\texorpdfstring{wheel\+Event()}{wheelEvent()}}
+{\footnotesize\ttfamily void Scene3\+D\+::wheel\+Event (\begin{DoxyParamCaption}\item[{Q\+Wheel\+Event $\ast$}]{pe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Processing of information of mouse\textquotesingle{}s wheel. 
+
+Processing of the mouse\textquotesingle{}s wheel events. Zoom in and zoom out. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+scene3d.\+h\item 
+scene3d.\+cpp\end{DoxyCompactItemize}
