@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QString>
 
+#include <QTextBrowser>
+
 static QString xxx, yyy, zzz;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -44,8 +46,10 @@ void MainWindow::on_Knopka_clicked()
 void MainWindow::on_Import_file_triggered()
 {
     QString path = QFileDialog::getOpenFileName(this,tr("Open asteroid"), "", tr("txt (*.txt);;All Files (*)"));
-    ui->Wido->my_getArrays(path.toStdString());
-    ui->Wido->update();
+    if (path != NULL) {
+        ui->Wido->my_getArrays(path.toStdString());
+        ui->Wido->update();
+    }
 }
 
 void MainWindow::free_main_window()
@@ -56,4 +60,8 @@ void MainWindow::free_main_window()
 
 void MainWindow::on_help_triggered()
 {
+    std::cout << "MainWindow::on_help_triggered()" << std::endl;
+    QTextBrowser *tb = new QTextBrowser(this);
+    tb->setOpenExternalLinks(true);
+    tb->setHtml("htmlString");
    }

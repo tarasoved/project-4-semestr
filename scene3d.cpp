@@ -16,6 +16,9 @@
 #include "grav_calc.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QGLWidget>
+
+//QGLWidget my_QGLWidget;
 
 struct CFace{
      int v1,v2,v3;
@@ -218,6 +221,7 @@ void Scene3D::translate_left()
 
 void Scene3D::paintGL()
 {
+    //my_QGLWidget.renderText(1, 1, 1, "test");
    if (this->flag_pnt) {
        CalcPoint();
        flag_pnt = 0;
@@ -265,6 +269,9 @@ void Scene3D::drawAxis()
       glVertex3f( 0.0f,  0.0f,  1.0f);
       glVertex3f( 0.0f,  0.0f, -1.0f);
    glEnd();
+
+   //my_QGLWidget.renderText(1, 1, 1, "test");
+
 }
 /*!
     \brief Drawing of arrow
