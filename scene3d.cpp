@@ -538,14 +538,9 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 */
 
 void Scene3D::free_scene3D() {
-   in.~tetgenio();
-   out.~tetgenio();
-   in.deinitialize();
-   out.deinitialize();
-   delete StrMyIndexArray;
-   delete StrMyVertexArray;
-   delete StrMyColorArray;
-
+   delete[] StrMyIndexArray;
+   delete[] StrMyVertexArray;
+   delete[] StrMyColorArray;
 }
 
 
