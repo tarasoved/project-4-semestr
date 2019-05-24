@@ -45,4 +45,5 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-DISTFILES +=
+DISTFILES += \
+    html/index.html

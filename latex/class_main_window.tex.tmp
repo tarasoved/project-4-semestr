@@ -1,0 +1,40 @@
+\hypertarget{class_main_window}{}\section{Main\+Window Class Reference}
+\label{class_main_window}\index{Main\+Window@{Main\+Window}}
+
+
+Inheritance diagram for Main\+Window\+:
+% FIG 0
+
+
+Collaboration diagram for Main\+Window\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_a996c5a2b6f77944776856f08ec30858d}\label{class_main_window_a996c5a2b6f77944776856f08ec30858d}} 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{class_main_window_acd45618b9bc721719ba52f1204853026}\label{class_main_window_acd45618b9bc721719ba52f1204853026}} 
+void {\bfseries free\+\_\+main\+\_\+window} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_a5239de5dbb14038f15845440bbddfa91}\label{class_main_window_a5239de5dbb14038f15845440bbddfa91}} 
+Q\+Menu\+Bar {\bfseries menu\+Bar}
+\item 
+\mbox{\Hypertarget{class_main_window_a6fac665a854deb61ad86e9ab8ad49875}\label{class_main_window_a6fac665a854deb61ad86e9ab8ad49875}} 
+Q\+Menu {\bfseries menu\+File}
+\item 
+\mbox{\Hypertarget{class_main_window_a2ba133f46744e245356ef6cbd3e3aeef}\label{class_main_window_a2ba133f46744e245356ef6cbd3e3aeef}} 
+Q\+Menu {\bfseries menu\+Help}
+\item 
+\mbox{\Hypertarget{class_main_window_a19551d7eaafb08d587f8d5d9af6b43b4}\label{class_main_window_a19551d7eaafb08d587f8d5d9af6b43b4}} 
+Q\+Push\+Button {\bfseries Knopka}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

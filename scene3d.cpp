@@ -21,25 +21,37 @@ struct CFace{
      int v1,v2,v3;
 };
 
+/*!
+    \brief Vertex of triangles
+
+    Vertex of triangles for asteroid's triangulation
+*/
 struct CVertex3{
     GLfloat x,y,z;
 };
 
+/*!
+    \brief Color of triangles
+
+    Color of triangles for asteroid's triangulation
+*/
 struct CColor3{
     GLfloat r,g,b;
 };
 
-static unsigned long IndexSize;
+static unsigned long IndexSize; //!< Size of index
 
-static CFace * StrMyIndexArray;
-static CVertex3 * StrMyVertexArray;
-static CColor3 * StrMyColorArray;
+static CFace * StrMyIndexArray; //!< Array of all indexes (?)
+static CVertex3 * StrMyVertexArray; //!< Array of all vertices
+static CColor3 * StrMyColorArray;//!< Array of all colors
+
 
 Scene3D::Scene3D(QWidget* parent) : QOpenGLWidget(parent)
 {
-   xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
+   zTra=0; xRot=-90; yRot=0; zRot=0; nSca=1; xTra=0;
 }
 
+//!\brief Initialization of GL
 void Scene3D::initializeGL()
 {
    initializeOpenGLFunctions();
@@ -51,6 +63,12 @@ void Scene3D::initializeGL()
    glEnableClientState(GL_VERTEX_ARRAY);
    glEnableClientState(GL_COLOR_ARRAY);
 }
+
+/*!
+    \brief Resize of window and GLWidget
+
+    GLWidhet is resizing here
+*/
 
 void Scene3D::resizeGL(int nWidth, int nHeight)
 {
@@ -66,6 +84,14 @@ void Scene3D::resizeGL(int nWidth, int nHeight)
 
    glViewport(0, 0, static_cast<GLint>(nWidth), static_cast<GLint>(nHeight));
 }
+
+/*!
+    \brief Reaction when some key is pressed
+
+    Switch of reactions for some key pressed.
+    Functions controling by keyboard are described later.
+    \param[in] pe PressEvent - when one of keys is pressed
+*/
 
 void Scene3D::keyPressEvent(QKeyEvent* pe)
 {
@@ -107,6 +133,14 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
       translate_up();
    break;
 
+   case Qt::Key_A:
+      translate_left();
+   break;
+
+   case Qt::Key_D:
+      translate_right();
+   break;
+
    case Qt::Key_Space:
       defaultScene();
    break;
@@ -119,45 +153,68 @@ void Scene3D::keyPressEvent(QKeyEvent* pe)
    update();
 }
 
+//!\brief Zoom in
 void Scene3D::scale_plus()
 {
    nSca = nSca*1.1f;
 }
 
+//!\brief Zoom out
 void Scene3D::scale_minus()
 {
    nSca = nSca/1.1f;
 }
 
+//!\brief Rotation around the horizontal axis
 void Scene3D::rotate_up()
 {
    xRot += 1.0f;
 }
 
+//!\brief Rotation around the horizontal axis
 void Scene3D::rotate_down()
 {
    xRot -= 1.0f;
 }
 
+//!\brief Rotation around the vertical axis
 void Scene3D::rotate_left()
 {
    zRot += 1.0f;
 }
 
+//!\brief Rotation around the vertical axis
 void Scene3D::rotate_right()
 {
    zRot -= 1.0f;
 }
 
+//!\brief Translation down
 void Scene3D::translate_down()
 {
    zTra -= 0.05f;
 }
 
+//!\brief Translation up
 void Scene3D::translate_up()
 {
    zTra += 0.05f;
 }
+//!\brief Translation right
+void Scene3D::translate_right()
+{
+   xTra += 0.05f;
+}
+
+//!\brief Translation left
+void Scene3D::translate_left()
+{
+   xTra -= 0.05f;
+}
+/*!
+    \brief Full drawing
+
+*/
 
 void Scene3D::paintGL()
 {
@@ -172,7 +229,7 @@ void Scene3D::paintGL()
    glLoadIdentity();
 
    glScalef(nSca, nSca, nSca);
-   glTranslatef(0.0f, zTra, 0.0f);
+   glTranslatef(xTra, zTra, 0.0f);
    glRotatef(xRot, 1.0f, 0.0f, 0.0f);
    glRotatef(yRot, 0.0f, 1.0f, 0.0f);
    glRotatef(zRot, 0.0f, 0.0f, 1.0f);
@@ -181,6 +238,11 @@ void Scene3D::paintGL()
    if (this->flag_arr) drawArrow();
    drawFigure();
 }
+
+/*!
+    \brief Drawing of axis
+
+*/
 
 void Scene3D::drawAxis()
 {
@@ -204,7 +266,12 @@ void Scene3D::drawAxis()
       glVertex3f( 0.0f,  0.0f, -1.0f);
    glEnd();
 }
+/*!
+    \brief Drawing of arrow
 
+    After calculation of point and the garvity force in this point this function will draw a beautiful red arrow.
+    Its direction will coincide with the direction of the gravity force's vector.
+*/
 void Scene3D::drawArrow()
 {
 
@@ -234,6 +301,12 @@ void Scene3D::drawArrow()
 
 }
 
+/*!
+    \brief Processing of information of mouse's wheel
+
+    Processing of the mouse's wheel events. Zoom in and zoom out.
+*/
+
 void Scene3D::wheelEvent(QWheelEvent* pe)
 {
    if ((pe->delta())>0) scale_plus(); else if ((pe->delta())<0) scale_minus();
@@ -241,11 +314,22 @@ void Scene3D::wheelEvent(QWheelEvent* pe)
    update();
 }
 
+/*!
+    \brief Default settings for scene
+
+    Give you an opportunity to return to the start scene, if you need to do it.
+*/
+
 void Scene3D::defaultScene()
 {
-   xRot=-90; yRot=0; zRot=0; zTra=0; nSca=1;
+   xRot=-90; yRot=0; zRot=0; xTra=0; zTra=0; nSca=1;
 }
 
+/*!
+    \brief Creation of arrow with verteices and colors for triangles
+
+    Always calling after improting of file. Create an arrow with the location of all vertices. Furthermore, define colors for triangles, depending on their location.
+*/
 void Scene3D::my_getArrays(std::string path)
 {
     std::ifstream file (path, std::ifstream::in);
@@ -373,6 +457,11 @@ void Scene3D::my_getArrays(std::string path)
     file.close();
 }
 
+/*!
+    \brief Calculation of the point
+
+    Processing of the data that was given by user. Result is given in the field: "Answer"
+*/
 void Scene3D::CalcPoint() {
 
      grav_in_point(&out, p, v);
@@ -385,6 +474,12 @@ void Scene3D::CalcPoint() {
 
 
 }
+
+/*!
+    \brief Drawing the triangles
+
+    This function draw an asteroid using GL function for drawing triangles.
+*/
 
 void Scene3D::drawFigure()
 {
@@ -400,10 +495,20 @@ void Scene3D::drawFigure()
     glDisableClientState(GL_VERTEX_ARRAY);
 }
 
+/*!
+    \brief Processing of mouse events
+
+    Processing of the mouse events when it is pressed
+*/
 void Scene3D::mousePressEvent(QMouseEvent* pe)
 {
    ptrMousePosition = pe->pos();
 }
+
+/*!
+    \brief Processing of mouse moves
+
+*/
 
 void Scene3D::mouseMoveEvent(QMouseEvent* pe)
 {
@@ -415,9 +520,21 @@ void Scene3D::mouseMoveEvent(QMouseEvent* pe)
    update();
 }
 
+/*!
+    \brief Avoiding memory leaks
+
+    Ths function will free tetgenio arrows.
+*/
+
 void Scene3D::free_scene3D() {
    in.~tetgenio();
    out.~tetgenio();
+   in.deinitialize();
+   out.deinitialize();
+   delete StrMyIndexArray;
+   delete StrMyVertexArray;
+   delete StrMyColorArray;
+
 }
 
 
