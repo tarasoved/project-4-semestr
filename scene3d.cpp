@@ -247,7 +247,10 @@ void Scene3D::paintGL()
     \brief Drawing of axis
 
 */
+/*void Scene3D::drawAxisSegment()
+{
 
+}*/
 void Scene3D::drawAxis()
 {
    glLineWidth(3.0f);
@@ -255,6 +258,7 @@ void Scene3D::drawAxis()
    glColor4f(1.00f, 0.00f, 0.00f, 1.0f);
    glBegin(GL_LINES);
       glVertex3f( 1.0f,  0.0f,  0.0f);
+
       glVertex3f(-1.0f,  0.0f,  0.0f);
    glEnd();
 
