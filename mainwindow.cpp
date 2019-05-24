@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    //ui->Wido->free_scene3D();
+    ui->Wido->free_scene3D();
     delete ui;
 }
 
